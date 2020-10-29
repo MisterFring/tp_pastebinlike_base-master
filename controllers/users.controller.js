@@ -5,7 +5,8 @@ module.exports = function createUserController(db) {
     const users = db.collection('users')
 
     return {
-        async signup({ email, pseudo, password }) {
+        async register({ email, pseudo, password }) {
+            console.log("TEST")
             const alreadyEmail = await users.findOne({ email: email })
             const alreadyPseudo = await users.findOne({ pseudo: pseudo })
             if (alreadyEmail || alreadyPseudo) {

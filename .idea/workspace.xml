@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b2cf0ac9-c978-49c7-8078-91cf0cec0f65" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/views/register.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/users.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/users.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/createRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/createRouter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/index.twig" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.twig" afterDir="false" />
     </list>
@@ -24,8 +45,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/views" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/views" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -36,10 +62,28 @@
       <option name="presentableId" value="Default" />
       <updated>1603965470171</updated>
       <workItem from="1603965472353" duration="979000" />
+      <workItem from="1603978468856" duration="5628000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="417" y="231" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603981044175">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state x="417" y="231" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.797@0.23.1440.797" timestamp="1603981044175" />
   </component>
 </project>

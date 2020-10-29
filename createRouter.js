@@ -23,8 +23,7 @@ async function createRouter(db) {
 
     /* Ceci est le block de code a dupliquer pour continuer l'app */
     router.get('/', (req, res) => {
-
-        return res.json({ hello: 'JImmy c 1 suisse' })
+        return res.json({ hello: 'Accueil' })
     })
 
     router.post('/signup', async function(req, res) {
@@ -48,6 +47,12 @@ async function createRouter(db) {
             isAuth: req.isAuth,
         })
     })
+
+    router.get('/register', (req, res) => {
+        console.log("TEST"),
+        res.render('register.twig', {
+        });
+    });
 
     router.get('/:slug', isAuth, async function (req, res) {
         console.log(req.params.slug)
