@@ -24,7 +24,7 @@ async function createRouter(db) {
     /* Ceci est le block de code a dupliquer pour continuer l'app */
     router.get('/', (req, res) => {
 
-        return res.json({ hello: 'world' })
+        return res.json({ hello: 'JImmy c 1 suisse' })
     })
 
     router.post('/signup', async function(req, res) {
