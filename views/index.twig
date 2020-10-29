@@ -1,31 +1,28 @@
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <title>Titre de la page</title>
-</head>
-<body>
-{% if pseudo is defined %}
-    {{ pseudo }}
-{% else %}
-<nav>
-    <a href="/signup"><button>SIGNUP</button></a>
-    <a href="/loginpage"><button>LOGIN</button></a>
-</nav>
-{%endif %}
+{% extends "main.twig" %}
 
-  <h1 style="text-align: center;">PASTEBIN LIKE</h1>
+{% block home %}
+
   <form action="/pasteSent" method="POST">
-    <input type="text" placeholder="Your title" name="title" required></input>
-    <input type="textarea" placeholder="Put your fucking code" name="content" required></input>
-    <button type="submit">Submit</button>
+    <input type="text" placeholder="Your title" name="title" required></input></br>
+    <textarea rows="5" cols="33" placeholder="Put your fucking code" name="content" required style="margin-top: 10px;"></textarea></br>
+    <button type="submit" style="margin-top: 10px;">Submit</button>
   </form>
 </br>
 <ul>
     {% for item in listOfPastes %}
-    <li>{{ item.title }}</li>
+    <li><a href="/paste/{{ item.url }}">{{ item.title }} - {{ item.createdAt }}</a></li>
     {% endfor %}
 </ul>
 
-</body>
-</html>
+{% endblock %}
+
+{% block nav %}
+    {% if pseudo is defined %}
+        {{ pseudo }}
+    {% else %}
+    <nav style="text-align: right;">
+        <a href="/signup"><button>SIGNUP</button></a>
+        <a href="/loginpage"><button>LOGIN</button></a>
+    </nav>
+    {%endif %}
+{% endblock %}
