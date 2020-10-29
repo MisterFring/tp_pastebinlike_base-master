@@ -9,7 +9,11 @@ module.exports = function createUserController(db) {
             const alreadyEmail = await users.findOne({ email: email })
             const alreadyPseudo = await users.findOne({ pseudo: pseudo })
             if (alreadyEmail || alreadyPseudo) {
-                return { error: 'User already exists' }
+                return { 
+                    error: 'User already exists',
+                    mail : alreadyEmail,
+                    pseudo : alreadyPseudo
+                }
             }
 
             // ne pas stocker les mot de passe en clair !
@@ -20,7 +24,7 @@ module.exports = function createUserController(db) {
             return { success: true }
         },
 
-        async login({ email, password }) {
+        async login( email, password ) {
             const user = await users.findOne({ email: email })
             if (!(user.password === password)) {
                 return { error: 'Bad credentials' }

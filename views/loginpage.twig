@@ -6,9 +6,16 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
+
+  {% if error is defined %}
+  <h3>{{ error }}</h3>
+  {% endif %}
   <div style="margin: auto;">
     <form method="post" action="/">
-      <input class="form-control form-control-lg" type="email" placeholder = {{ mail }}  name="email"></input>
+      <input class="form-control form-control-lg" type="email" 
+      placeholder = {% if mail is defined %} {{ mail }} {% else %} "Your mail" {% endif %} 
+      name="email">
+      </input>
       <input class="form-control form-control-lg" type="password" placeholder="Your password" name="password"></input>
       <button class="btn btn-warning" type="submit" class="btn btn-warning">Submit</button>
     </form>

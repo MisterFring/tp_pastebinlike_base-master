@@ -31,8 +31,12 @@ async function createRouter(db) {
     })
 
     router.post('/', async function(req, res) {
-        const loginResult = await UserController.login(req.body)
-        return res.render('index.twig', { pseudo : loginResult.pseudo})
+        const loginResult = await UserController.login(req.body.email, req.body.password)
+        console.log("loginresult : " + loginResult.error)
+        if (loginResult.error){
+            return res.render('loginpage.twig', { error : loginResult.error })
+        }
+        return res.render('index.twig', { pseudo : loginResult.pseudo })
     })
 
     router.get('/signup', async function(req, res) {
@@ -43,13 +47,26 @@ async function createRouter(db) {
 
     router.post('/signup', async function(req, res) {
         const response = req.body;
-        await UserController.signup(response.email, response.pseudo, response.password); 
+        const resultSignup = await UserController.signup(response.email, response.pseudo, response.password);
+        
+        if (resultSignup.error){
+            return res.render('signuppage.twig', {error : resultSignup.error, mail : resultSignup.mail.email, pseudo : resultSignup.pseudo.pseudo})
+        }
         return res.render('loginpage.twig', {mail : response.email})
     })
 
     router.get('/loginpage', async function(req, res) {
         return res.render('loginpage.twig')
     })
+
+    // router.post('/login', async function(req, res) {
+    //     if (UserController.login(req.body.email, req.body.password)){
+    //         return res.render('index.twig', {resultat:"Connecté"})
+    //     }
+    //     else {
+    //         return res.render('index.twig', {resultat: "merde"})
+    //     }
+    // })
 
     router.get('/my-pastes', isAuth, async function (req, res) {
         if (!req.isAuth) {
