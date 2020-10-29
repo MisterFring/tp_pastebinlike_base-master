@@ -1,11 +1,11 @@
-const crypto = require('crypto')
+crypto = require('crypto')
 
 module.exports = function createUserController(db) {
 
     const users = db.collection('users')
 
     return {
-        async signup({ email, pseudo, password }) {
+        async signup( email, pseudo, password ) {
             const alreadyEmail = await users.findOne({ email: email })
             const alreadyPseudo = await users.findOne({ pseudo: pseudo })
             if (alreadyEmail || alreadyPseudo) {
@@ -22,14 +22,14 @@ module.exports = function createUserController(db) {
 
         async login({ email, password }) {
             const user = await users.findOne({ email: email })
-            if (!(user && user.password === password)) {
+            if (!(user.password === password)) {
                 return { error: 'Bad credentials' }
             }
 
             user.authToken = crypto.randomBytes(20).toString('hex')
             users.save(user)
 
-            return { success: true, authToken: user.authToken }
+            return { success: true, authToken: user.authToken, pseudo : user.pseudo }
         }
     }
 

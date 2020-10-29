@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Titre de la page</title>
+</head>
+<body>
+<nav><a href="/signup"><button>SIGNUP</button></a><a href="/loginpage"><button>LOGIN</button></a></nav>
+  <h1 style="text-align: center;">PASTEBIN LIKE</h1>
+  <form action="/pasteSent" method="POST">
+    <input type="text" placeholder="Your title" name="title" required></input>
+    <input type="textarea" placeholder="Put your fucking code" name="content" required></input>
+    <button type="submit">Submit</button>
+  </form>
+</br>
+  <ul>
+      {% for item in listOfPastes %}
+      <li>{{ item.title }}</li>
+      {% endfor %}
+  </ul>
+
+</body>
+</html>

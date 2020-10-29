@@ -1,10 +1,12 @@
 const Router = require('express').Router
 const createUserController = require('./controllers/users.controller')
+const createPasteController = require('./controllers/pastes.controller')
 
 
 async function createRouter(db) {
     const router = Router()
     const UserController = createUserController(db)
+    const PasteController = createPasteController(db)
 
     async function isAuth(req, res, next) {
         console.log('isAuth is called now')
@@ -24,17 +26,29 @@ async function createRouter(db) {
     /* Ceci est le block de code a dupliquer pour continuer l'app */
     router.get('/', (req, res) => {
 
-        return res.json({ hello: 'world' })
+        //return res.json({ hello: 'world' })
+        return res.render('index.twig', { message : "helloooooo", message2 : 'Anthony'})
+    })
+
+    router.post('/', async function(req, res) {
+        const loginResult = await UserController.login(req.body)
+        return res.render('index.twig', { pseudo : loginResult.pseudo})
+    })
+
+    router.get('/signup', async function(req, res) {
+        //const signupResult = await UserController.signup(req.body)
+        return res.render('signuppage.twig')
+        //return res.json(signupResult)
     })
 
     router.post('/signup', async function(req, res) {
-        const signupResult = await UserController.signup(req.body)
-        return res.json(signupResult)
+        const response = req.body;
+        await UserController.signup(response.email, response.pseudo, response.password); 
+        return res.render('loginpage.twig', {mail : response.email})
     })
 
-    router.post('/login', async function(req, res) {
-        const loginResult = await UserController.login(req.body)
-        return res.json(loginResult)
+    router.get('/loginpage', async function(req, res) {
+        return res.render('loginpage.twig')
     })
 
     router.get('/my-pastes', isAuth, async function (req, res) {
@@ -53,6 +67,15 @@ async function createRouter(db) {
         console.log(req.params.slug)
 
         return res.json({ slug: req.params.slug })
+    })
+
+    router.post('/pasteSent', async function(req, res){
+        //console.log(req.body)
+        await PasteController.insertPaste(req.body.title, req.body.content);
+        const listOfPastes = await PasteController.retrievePastes();
+        console.log("reponse :" + listOfPastes);
+        //return res.json({ test : listOfPastes })
+        return res.render('index.twig', { listOfPastes : listOfPastes })
     })
 
     
