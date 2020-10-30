@@ -1,4 +1,5 @@
-crypto = require('crypto')
+const crypto = require('crypto')
+const date_fns = require('date-fns')
 //Math = require('mathjs')
 
 module.exports = function createUserController(db) {
@@ -41,22 +42,27 @@ module.exports = function createUserController(db) {
             return pastes.findOne({ url : parseInt(url) });
         },
 
-        correctDigits(time) {
-            return ("0" + time).slice(-2);
-        }
-        // getNiceDate(arrayOfPastes){
+        // correctDigits(time) {
+        //     return ("0" + time).slice(-2);
+        // }, 
 
-        //     return arrayOfPastes.forEach(element => {
-        //         var myDate = element.createdAt;
-        //         var year = myDate.getFullYear();
-        //         var month = myDate.getMonth();
-        //         var day = myDate.getDate();
-        //         var hour = myDate.getHours();
-        //         var min = myDate.getMinutes();
-        //         var sec = myDate.getSeconds();
-        //         element.createdAt =  year + " / " + month + " / " + day + " - " + hour + ":" + min + ":" + sec;
-        //     });
-        // }
+        getNiceDate(arrayOfPastes){
+        
+            for (const item of arrayOfPastes) {
+                item.createdAt = date_fns.format((item.createdAt), "yyyy-MM-dd HH:mm:ss")
+            }
+            return arrayOfPastes
+                // arrayOfPastes.forEach(element => {
+                //     var myDate = element.createdAt;
+                //     var year = myDate.getFullYear();
+                //     var month = myDate.getMonth();
+                //     var day = myDate.getDate();
+                //     var hour = myDate.getHours();
+                //     var min = myDate.getMinutes();
+                //     var sec = myDate.getSeconds();
+                //     element.createdAt =  year + " / " + month + " / " + day + " - " + hour + ":" + min + ":" + sec;
+                // });
+        }
     }
 
 

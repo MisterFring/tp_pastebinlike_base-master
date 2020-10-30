@@ -27,17 +27,10 @@ async function createRouter(db) {
     router.get('/', async function(req, res) {
         const listOfPastes = await PasteController.retrievePastes();
         //const test = PasteController.getNiceDate(listOfPastes);
-        listOfPastes.forEach(element => {
-            const myDate = element.createdAt;
-            var year = myDate.getFullYear();
-            var month = myDate.getMonth();
-            var day = myDate.getDate();
-            var hour = PasteController.correctDigits(myDate.getHours());
-            var min = PasteController.correctDigits(myDate.getMinutes());
-            var sec = PasteController.correctDigits(myDate.getSeconds());
-            element.createdAt =  year + "/" + month + "/" + day + " - " + hour + ":" + min + ":" + sec;
-        });
-        return res.render('index.twig', { listOfPastes : listOfPastes })
+
+        const newListOfPastes = PasteController.getNiceDate(listOfPastes);
+
+        return res.render('index.twig', { listOfPastes : newListOfPastes })
     })
     
     router.post('/', async function(req, res) {

@@ -8,7 +8,7 @@
     <button type="submit" class="btn btn-warning">Submit</button>
   </form>
 
-<h4 style="margin-top: 5%;">Latest pates</h4>
+<h4 style="margin-top: 5%;">Latest pastes</h4>
 <ul>
     {% for item in listOfPastes %}
     <li><a href="/paste/{{ item.url }}">{{ item.title }} - {{ item.createdAt }}</a></li>

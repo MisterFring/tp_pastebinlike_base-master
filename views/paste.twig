@@ -3,7 +3,13 @@
 {% block paste %}
     <h2>{{ data.title }}</h2>
     <h6>{{ data.createdAt }}</h6>
-    <pre>
+    <!-- <pre style="border: gray solid 1px; margin-top: 5px;">
         <code class="js">{{ data.content }}</code>
-    </pre>
+    </pre> -->
+    <!-- <textarea rows="1" style="width: 100%; min-height: 300px;">
+        <code class="js">{{ data.content }}</code>
+    </textarea> -->
+    <textarea class="form-control" style="min-height: 300px;">
+        <code class="js">{{ data.content }}</code>
+    </textarea>
 {% endblock %}
