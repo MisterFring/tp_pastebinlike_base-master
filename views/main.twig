@@ -5,13 +5,32 @@
   <title>Pastebin-Like</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
+<style>
+    form > * {
+        margin-top: 20px;
+    }
+</style>
 <body style="margin: 30px;">
 
-{% block nav %}{% endblock %}
-<h1 style="text-align: center;">PASTEBIN LIKE</h1>
+{% if pseudo is defined %}
+    {{ pseudo }}
+{% else %}
+<nav style="text-align: right;">
+    {% if signup is defined%}{% else %}
+    <a href="/signup"><button class="btn btn-outline-secondary">SIGNUP</button></a>
+    {% endif %}
+
+    {% if login is defined%}{% else %}
+    <a href="/loginpage"><button class="btn btn-outline-secondary">LOGIN</button></a>
+    {% endif %}
+</nav>
+{%endif %}
+<a href="/" style="text-decoration: none; color: firebrick;"><h1 style="text-align: center;">PASTEBIN LIKE</h1></a>
 
 {% block signup %}{% endblock %}
+{% block login %}{% endblock %}
 {% block home %}{% endblock %}
+{% block paste %}{% endblock %}
 
 </body>
 </html>

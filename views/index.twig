@@ -3,26 +3,16 @@
 {% block home %}
 
   <form action="/pasteSent" method="POST">
-    <input type="text" placeholder="Your title" name="title" required></input></br>
-    <textarea rows="5" cols="33" placeholder="Put your fucking code" name="content" required style="margin-top: 10px;"></textarea></br>
-    <button type="submit" style="margin-top: 10px;">Submit</button>
+    <input type="text" class="form-control form-control-lg" placeholder="Your title" name="title" required></input></br>
+    <textarea rows="5" class="form-control form-control-lg" cols="33" placeholder="Put your fucking code" name="content" required></textarea></br>
+    <button type="submit" class="btn btn-warning">Submit</button>
   </form>
-</br>
+
+<h4 style="margin-top: 5%;">Latest pates</h4>
 <ul>
     {% for item in listOfPastes %}
     <li><a href="/paste/{{ item.url }}">{{ item.title }} - {{ item.createdAt }}</a></li>
     {% endfor %}
 </ul>
 
-{% endblock %}
-
-{% block nav %}
-    {% if pseudo is defined %}
-        {{ pseudo }}
-    {% else %}
-    <nav style="text-align: right;">
-        <a href="/signup"><button>SIGNUP</button></a>
-        <a href="/loginpage"><button>LOGIN</button></a>
-    </nav>
-    {%endif %}
 {% endblock %}

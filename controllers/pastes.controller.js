@@ -39,7 +39,24 @@ module.exports = function createUserController(db) {
 
         retrieveOnePaste(url) {
             return pastes.findOne({ url : parseInt(url) });
+        },
+
+        correctDigits(time) {
+            return ("0" + time).slice(-2);
         }
+        // getNiceDate(arrayOfPastes){
+
+        //     return arrayOfPastes.forEach(element => {
+        //         var myDate = element.createdAt;
+        //         var year = myDate.getFullYear();
+        //         var month = myDate.getMonth();
+        //         var day = myDate.getDate();
+        //         var hour = myDate.getHours();
+        //         var min = myDate.getMinutes();
+        //         var sec = myDate.getSeconds();
+        //         element.createdAt =  year + " / " + month + " / " + day + " - " + hour + ":" + min + ":" + sec;
+        //     });
+        // }
     }
 
 

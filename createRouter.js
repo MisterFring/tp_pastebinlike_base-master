@@ -26,9 +26,20 @@ async function createRouter(db) {
     /* Ceci est le block de code a dupliquer pour continuer l'app */
     router.get('/', async function(req, res) {
         const listOfPastes = await PasteController.retrievePastes();
+        //const test = PasteController.getNiceDate(listOfPastes);
+        listOfPastes.forEach(element => {
+            const myDate = element.createdAt;
+            var year = myDate.getFullYear();
+            var month = myDate.getMonth();
+            var day = myDate.getDate();
+            var hour = PasteController.correctDigits(myDate.getHours());
+            var min = PasteController.correctDigits(myDate.getMinutes());
+            var sec = PasteController.correctDigits(myDate.getSeconds());
+            element.createdAt =  year + "/" + month + "/" + day + " - " + hour + ":" + min + ":" + sec;
+        });
         return res.render('index.twig', { listOfPastes : listOfPastes })
     })
-
+    
     router.post('/', async function(req, res) {
         const loginResult = await UserController.login(req.body.email, req.body.password)
         console.log("loginresult : " + loginResult.error)
@@ -40,7 +51,7 @@ async function createRouter(db) {
 
     router.get('/signup', async function(req, res) {
         //const signupResult = await UserController.signup(req.body)
-        return res.render('signuppage.twig')
+        return res.render('signuppage.twig', { signup : true })
         //return res.json(signupResult)
     })
 
@@ -54,11 +65,11 @@ async function createRouter(db) {
                 mail : resultSignup.mail.email, 
                 pseudo : resultSignup.pseudo.pseudo})
         }
-        return res.render('loginpage.twig', { mail : response.email })
+        return res.render('loginpage.twig', { mail : response.email, login : true })
     })
 
     router.get('/loginpage', async function(req, res) {
-        return res.render('loginpage.twig')
+        return res.render('loginpage.twig', { login : true })
     })
 
     router.get('/my-pastes', isAuth, async function (req, res) {
