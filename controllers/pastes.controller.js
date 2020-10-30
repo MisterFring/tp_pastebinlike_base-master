@@ -13,7 +13,7 @@ module.exports = function createUserController(db) {
                 title : title, 
                 content : content, 
                 createdAt : new Date(),
-                url : Math.round(new Date().getTime() / 1000), 
+                url : Math.round(new Date().getTime() / 1000),
                 owner : owner
             })
             return { success : true }

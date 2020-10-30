@@ -48,16 +48,6 @@ async function createRouter(db) {
             return res.render('loginpage.twig', { error : loginResult.error })
         }
         res.cookie('authToken', loginResult.authToken);
-        // //const getCookie = req.cookies;
-        // let pseudoBis = undefined
-
-        // if (loginResult.authToken) {
-        //     console.log('token : ' + loginResult.authToken);
-        //     const user = await UserController.getPseudo(loginResult.authToken);
-        //     if (user != null) {
-        //         pseudoBis = user.pseudo;
-        //     }
-        // }
         const listOfPastes = await PasteController.retrievePastes();
         const newListOfPastes = PasteController.getNiceDate(listOfPastes);
         //console.log('login : ' + pseudoBis);
@@ -77,8 +67,8 @@ async function createRouter(db) {
         if (resultSignup.error){
             return res.render('signuppage.twig', { 
                 error : resultSignup.error, 
-                mail : resultSignup.mail.email, 
-                pseudo : resultSignup.pseudo.pseudo})
+                mailBis : response.email, 
+                pseudoBis : response.pseudo})
         }
         return res.render('loginpage.twig', { mail : response.email, login : true })
     })

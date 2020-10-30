@@ -9,7 +9,8 @@
     <form method="post" action="/">
       <input class="form-control form-control-lg" type="email" 
       placeholder = "Your mail"
-      name="email">{% if mail is defined %} {{ mail }} {% endif %} 
+      value={% if mail is defined %} {{ mail }} {% endif %}
+      name="email"> 
       </input>
       <input class="form-control form-control-lg" type="password" placeholder="Your password" name="password"></input>
       <button class="btn btn-warning" type="submit" class="btn btn-warning">Submit</button>

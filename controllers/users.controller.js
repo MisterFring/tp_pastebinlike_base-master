@@ -10,9 +10,7 @@ module.exports = function createUserController(db) {
             const alreadyPseudo = await users.findOne({ pseudo: pseudo })
             if (alreadyEmail || alreadyPseudo) {
                 return { 
-                    error: 'User already exists',
-                    mail : alreadyEmail,
-                    pseudo : alreadyPseudo
+                    error: 'User already exists'
                 }
             }
             const hash = crypto.createHash('sha256');
