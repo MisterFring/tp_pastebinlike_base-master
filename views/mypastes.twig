@@ -2,16 +2,19 @@
 
 {% block mypastes %}
 
-{% for item in mypastes %}
+{% if mypastes is empty %}
+    <h2 style="text-align: center; margin-top: 10%;">You don't have any pastes</h2>
+{% else %}
+    {% for item in mypastes %}
 
-<h2>{{ item.title }}</h2>
-<h6>{{ item.createdAt }}</h6>
+    <h2>{{ item.title }}</h2>
+    <h6>{{ item.createdAt }}</h6>
 
-<textarea class="form-control" style="min-height: 300px;">
-    <code class="js">{{ item.content }}</code>
-</textarea>
+    <textarea class="form-control" style="min-height: 300px;">
+        <code class="js">{{ item.content }}</code>
+    </textarea>
+    {% endfor %}
 
-
-{% endfor %}
+{% endif %}
     
 {% endblock %}
