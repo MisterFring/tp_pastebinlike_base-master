@@ -8,12 +8,13 @@ module.exports = function createUserController(db) {
 
     return {
 
-        async insertPaste(title, content) {
+        async insertPaste(title, content, owner) {
             const insertOne = await pastes.insertOne({ 
                 title : title, 
                 content : content, 
                 createdAt : new Date(),
-                url : Math.round(new Date().getTime() / 1000)
+                url : Math.round(new Date().getTime() / 1000), 
+                owner : owner
             })
             return { success : true }
         },

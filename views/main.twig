@@ -13,15 +13,21 @@
 <body style="margin: 30px;">
 
 {% if pseudo is defined %}
-    {{ pseudo }}
+    <nav style="text-align: right;">
+        <h3>{{ pseudo }}</h3>
+        {% if mypastes is defined%}{% else %}
+        <a href="/my-pastes"><button class="btn btn-outline-secondary">MY PASTES</button></a>
+        {% endif %}
+        <a href="/disconnect"><button class="btn btn-outline-secondary">LOG OUT</button></a>
+    </nav>
 {% else %}
 <nav style="text-align: right;">
     {% if signup is defined%}{% else %}
-    <a href="/signup"><button class="btn btn-outline-secondary">SIGNUP</button></a>
+    <a href="/signup"><button class="btn btn-outline-secondary">SIGN UP</button></a>
     {% endif %}
 
     {% if login is defined%}{% else %}
-    <a href="/loginpage"><button class="btn btn-outline-secondary">LOGIN</button></a>
+    <a href="/loginpage"><button class="btn btn-outline-secondary">LOG IN</button></a>
     {% endif %}
 </nav>
 {%endif %}
@@ -31,6 +37,7 @@
 {% block login %}{% endblock %}
 {% block home %}{% endblock %}
 {% block paste %}{% endblock %}
+{% block mypastes %}{% endblock %}
 
 </body>
 </html>

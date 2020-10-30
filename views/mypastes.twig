@@ -1,0 +1,17 @@
+{% extends "main.twig" %}
+
+{% block mypastes %}
+
+{% for item in mypastes %}
+
+<h2>{{ item.title }}</h2>
+<h6>{{ item.createdAt }}</h6>
+
+<textarea class="form-control" style="min-height: 300px;">
+    <code class="js">{{ item.content }}</code>
+</textarea>
+
+
+{% endfor %}
+    
+{% endblock %}

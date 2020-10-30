@@ -26,14 +26,17 @@ module.exports = function createUserController(db) {
 
         async login( email, password ) {
             const user = await users.findOne({ email: email })
-            if (!(user.password === password)) {
+            if (!(user && user.password === password)) {
                 return { error: 'Bad credentials' }
             }
-
             user.authToken = crypto.randomBytes(20).toString('hex')
             users.save(user)
 
             return { success: true, authToken: user.authToken, pseudo : user.pseudo }
+        },
+
+        getPseudo(token){
+            return users.findOne({authToken : token}, {pseudo : 1})
         }
     }
 

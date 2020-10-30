@@ -1,15 +1,15 @@
 {% extends "main.twig" %}
 
 {% block login %}
-<h2>LOGIN</h2>
+<h2>LOG IN</h2>
   {% if error is defined %}
   <h3>{{ error }}</h3>
   {% endif %}
   <div style="margin: auto;">
     <form method="post" action="/">
       <input class="form-control form-control-lg" type="email" 
-      placeholder = {% if mail is defined %} {{ mail }} {% else %} "Your mail" {% endif %} 
-      name="email">
+      placeholder = "Your mail"
+      name="email">{% if mail is defined %} {{ mail }} {% endif %} 
       </input>
       <input class="form-control form-control-lg" type="password" placeholder="Your password" name="password"></input>
       <button class="btn btn-warning" type="submit" class="btn btn-warning">Submit</button>

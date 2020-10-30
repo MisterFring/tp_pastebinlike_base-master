@@ -3,15 +3,23 @@
 {% block home %}
 
   <form action="/pasteSent" method="POST">
-    <input type="text" class="form-control form-control-lg" placeholder="Your title" name="title" required></input></br>
-    <textarea rows="5" class="form-control form-control-lg" cols="33" placeholder="Put your fucking code" name="content" required></textarea></br>
+    <input type="text" class="form-control form-control-lg" placeholder="Your title" name="title" required></input>
+    <textarea rows="5" class="form-control form-control-lg" cols="33" placeholder="Put your fucking code" name="content" required></textarea>
+    
+    {% if pseudo is defined %}
+    
+    <label class="form-check-label form-control-lg">
+        <input class="form-check-input" type="checkbox" name="anonymousMode">
+        Post in Anonymous mode
+    </label></br>
+    {% endif %}
     <button type="submit" class="btn btn-warning">Submit</button>
   </form>
 
-<h4 style="margin-top: 5%;">Latest pastes</h4>
+<h4 style="margin-top: 20px;">Latest pastes</h4>
 <ul>
     {% for item in listOfPastes %}
-    <li><a href="/paste/{{ item.url }}">{{ item.title }} - {{ item.createdAt }}</a></li>
+    <li><a href="/paste/{{ item.url }}">{{ item.title }} - {{ item.createdAt }} By {{ item.owner }}</a></li>
     {% endfor %}
 </ul>
 

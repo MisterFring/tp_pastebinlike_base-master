@@ -1,7 +1,7 @@
 {% extends "main.twig" %}
 
 {% block paste %}
-    <h2>{{ data.title }}</h2>
+    <h2>{{ data.title }} - By {{ data.owner }}</h2>
     <h6>{{ data.createdAt }}</h6>
     <!-- <pre style="border: gray solid 1px; margin-top: 5px;">
         <code class="js">{{ data.content }}</code>
